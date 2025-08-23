@@ -1,0 +1,5 @@
+# Ignore typical editors and OS files
+.vscode/
+*.log
+node_modules/
+.DS_Store

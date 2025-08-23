@@ -91,7 +91,7 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6px 20px;
+  padding: 20px 40px;
 }
 
 #logo, #subtitle {
@@ -103,22 +103,24 @@ body {
 
 #logo {
   font-size: 48px;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: 1px;
   font-weight: 300;
+  margin-bottom: 20px;
+  display: block;
 }
 
 #subtitle {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.8;
   letter-spacing: 0.3px;
   opacity: 0.95;
   display: block;
-  max-width: 1100px;
-  margin: 8px auto 0;
+  max-width: 800px;
+  margin: 0 auto;
   white-space: normal;
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: keep-all;
 }
 
 #subtitle-wrap {

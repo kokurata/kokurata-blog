@@ -6,7 +6,7 @@
       <ul>
         {% for category in categories %}
           <li>
-            <a href="/categories/#{{ category[0] | slugify }}">{{ category[0] }}</a>
+            <a href="{{ '/categories/#' | append: category[0] | slugify | relative_url }}">{{ category[0] }}</a>
             <span class="category-list-count">{{ category[1].size }}</span>
           </li>
         {% endfor %}
@@ -25,7 +25,7 @@
       <ul>
         {% for tag in tags %}
           <li>
-            <a href="/tags/#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
+            <a href="{{ '/tags/#' | append: tag[0] | slugify | relative_url }}">{{ tag[0] }}</a>
             <span class="tag-list-count">{{ tag[1].size }}</span>
           </li>
         {% endfor %}
@@ -61,7 +61,7 @@
       <ul>
         {% for year in posts_by_year %}
           <li>
-            <a href="/archives/#{{ year.name }}">{{ year.name }}年</a>
+            <a href="{{ '/archives/#' | append: year.name | relative_url }}">{{ year.name }}年</a>
             <span class="archive-list-count">{{ year.items.size }}</span>
           </li>
         {% endfor %}

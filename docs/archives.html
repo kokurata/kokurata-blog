@@ -1,0 +1,104 @@
+---
+layout: default
+title: "アーカイブ"
+permalink: /archives/
+---
+
+<div class="archive">
+  <h1 class="page-title">記事アーカイブ</h1>
+  
+  {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% if posts_by_year.size > 0 %}
+    {% for year in posts_by_year %}
+      <section class="year-section">
+        <h2 id="{{ year.name }}" class="year-title">
+          {{ year.name }}年 ({{ year.items.size }}件)
+        </h2>
+        
+        {% assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%Y-%m'" %}
+        {% for month in posts_by_month %}
+          <div class="month-section">
+            <h3 class="month-title">
+              {{ month.items[0].date | date: "%Y年%m月" }}
+            </h3>
+            
+            {% for post in month.items %}
+              <article class="archive-article archive-type-post">
+                <div class="archive-article-inner">
+                  <div class="article-meta">
+                    <a href="{{ post.url | relative_url }}" class="article-date">
+                      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m月%d日" }}</time>
+                    </a>
+                    {% if post.categories and post.categories.size > 0 %}
+                      <div class="article-category">
+                        {% for category in post.categories %}
+                          <a href="/categories/#{{ category | slugify }}" class="article-category-link">{{ category }}</a>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="article-inner">
+                    <header class="article-header">
+                      <h4 class="article-title">
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                      </h4>
+                    </header>
+                    {% if post.excerpt %}
+                      <div class="article-entry">
+                        {{ post.excerpt | strip_html | truncatewords: 25 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  {% else %}
+    <div class="no-posts">
+      <h2>記事はありません</h2>
+      <p>まだ投稿された記事がありません。</p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+.page-title {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #4a90e2;
+}
+
+.year-section {
+  margin-bottom: 60px;
+}
+
+.year-title {
+  font-size: 28px;
+  color: #4a90e2;
+  margin-bottom: 30px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e1e8ed;
+}
+
+.month-section {
+  margin-bottom: 40px;
+  margin-left: 20px;
+}
+
+.month-title {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.archive-article .article-title {
+  font-size: 18px;
+}
+</style>

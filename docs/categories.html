@@ -1,0 +1,71 @@
+---
+layout: default
+title: "カテゴリ"
+permalink: /categories/
+---
+
+<div class="archive">
+  <h1 class="page-title">カテゴリ別記事一覧</h1>
+  
+  {% assign categories = site.categories | sort %}
+  {% if categories.size > 0 %}
+    {% for category in categories %}
+      <section class="category-section">
+        <h2 id="{{ category[0] | slugify }}" class="category-title">
+          {{ category[0] }} ({{ category[1].size }}件)
+        </h2>
+        
+        {% for post in category[1] %}
+          <article class="archive-article archive-type-post">
+            <div class="archive-article-inner">
+              <div class="article-meta">
+                <a href="{{ post.url | relative_url }}" class="article-date">
+                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
+                </a>
+              </div>
+              <div class="article-inner">
+                <header class="article-header">
+                  <h3 class="article-title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                  </h3>
+                </header>
+                {% if post.excerpt %}
+                  <div class="article-entry">
+                    {{ post.excerpt | strip_html | truncatewords: 30 }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  {% else %}
+    <div class="no-posts">
+      <h2>カテゴリはありません</h2>
+      <p>まだカテゴリ分けされた投稿がありません。</p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+.page-title {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #4a90e2;
+}
+
+.category-section {
+  margin-bottom: 50px;
+}
+
+.category-title {
+  font-size: 24px;
+  color: #4a90e2;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e1e8ed;
+}
+</style>

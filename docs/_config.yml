@@ -1,9 +1,8 @@
 title: "技術ブログ"
 email: ''
 description: >-
-  SharePoint Online/OneDrive for Business、SharePoint Server（オンプレミス）、
-  Microsoft Stream に関する技術メモと運用ノウハウ。
-  記載内容は個人の見解であり、所属組織の公式見解ではありません。
+  すべての投稿は「現状のまま」提供され、いかなる保証もなく、権利も付与されません。
+  このブログで表明された意見や見解は著者のものであり、必ずしもマイクロソフトの見解を述べたり反映したりするものではありません。
 baseurl: '/kokurata-blog'
 url: 'https://kokurata.github.io'
 theme: jekyll-theme-primer

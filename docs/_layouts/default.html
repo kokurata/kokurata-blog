@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="{{ '/assets/images/logo.svg' | relative_url }}" type="image/svg+xml">
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+        <div id="banner"></div>
+        <div id="header-outer" class="outer">
+          <div id="header-title" class="inner">
+            <h1 id="logo-wrap">
+              <a href="{{ '/' | relative_url }}" id="logo">{{ site.title }}</a>
+            </h1>
+            {% if site.description %}
+              <h2 id="subtitle-wrap">
+                <a href="{{ '/' | relative_url }}" id="subtitle">{{ site.description }}</a>
+              </h2>
+            {% endif %}
+          </div>
+          <div id="header-inner" class="inner">
+            <nav id="main-nav">
+              <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+              <a class="main-nav-link" href="{{ '/' | relative_url }}">ホーム</a>
+              <a class="main-nav-link" href="{{ '/archives/' | relative_url }}">アーカイブ</a>
+            </nav>
+            <nav id="sub-nav">
+              <a class="nav-icon nav-search-btn" title="検索"><span class="fa fa-search"></span></a>
+            </nav>
+          </div>
+        </div>
+      </header>
+      
+      <div class="outer">
+        <section id="main">{{ content }}</section>
+        <aside id="sidebar">
+          {% include sidebar.html %}
+        </aside>
+      </div>
+      
+      <footer id="footer">
+        <div class="outer">
+          <div id="footer-info" class="inner">
+            &copy; {{ 'now' | date: "%Y" }} {{ site.author.name | default: site.title }}<br>
+            Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

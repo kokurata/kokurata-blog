@@ -1,153 +1,63 @@
 ---
 layout: default
-title: "ブログ記事一覧"
 ---
 
-<div class="blog-home">
-  <header class="blog-header">
-    <h1 class="site-title">{{ site.title }}</h1>
-    <p class="site-description">{{ site.description }}</p>
-  </header>
-
+<div class="archive">
   {% if site.posts.size > 0 %}
-  <main class="posts-container">
     {% for post in site.posts %}
-    <article class="post-card">
-      <header class="post-header">
-        <h2 class="post-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
-        <div class="post-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
-            {{ post.date | date: "%Y年%m月%d日" }}
-          </time>
-          {% if post.author %}
-          <span class="post-author">• {{ post.author }}</span>
-          {% endif %}
-          {% if post.categories.size > 0 %}
-          <div class="post-categories">
-            {% for category in post.categories %}
-            <span class="category-tag">{{ category }}</span>
-            {% endfor %}
+      <article class="archive-article archive-type-post">
+        <div class="archive-article-inner">
+          <div class="article-meta">
+            <a href="{{ post.url | relative_url }}" class="article-date">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m月%d日" }}</time>
+            </a>
+            {% if post.categories and post.categories.size > 0 %}
+              <div class="article-category">
+                {% for category in post.categories %}
+                  <a href="/categories/#{{ category | slugify }}" class="article-category-link">{{ category }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
           </div>
-          {% endif %}
-        </div>
-      </header>
-      
-      {% if post.excerpt %}
-      <div class="post-excerpt">
-        {{ post.excerpt | strip_html | truncatewords: 50 }}
-      </div>
-      {% endif %}
-      
-      <footer class="post-footer">
-        <a href="{{ post.url | relative_url }}" class="read-more">続きを読む →</a>
-      </footer>
-    </article>
-    {% unless forloop.last %}<hr class="post-divider">{% endunless %}
-    {% endfor %}
-  </main>
-  {% else %}
-  <div class="no-posts">
-    <h2>投稿はまだありません</h2>
-    <p>新しい記事が投稿されるまでお待ちください。</p>
-  </div>
-  {% endif %}
-</div>
-
-              {% for post in site.posts %}
-              <article class="entry" itemscope itemtype="http://schema.org/BlogPosting">
-                <header class="entry-header">
-                  <h2 class="entry-title" itemprop="headline"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-                  <div class="entry-byline">
-                    <span class="entry-author">{{ post.author | default: site.author.name }}</span>
-                    - <time class="entry-published" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-                  </div>
-                </header>
-                <div class="entry-summary" itemprop="description">
-                  {{ post.excerpt | markdownify }}
-                  <p><a href="{{ post.url | relative_url }}" class="more-link">続きを読む</a></p>
-                </div>
-              </article>
-              {% endfor %}
-
-              <nav class="pagination-wrapper">
-                {% if paginator.previous_page %}
-                  <a href="{{ paginator.previous_page_path }}">« 前</a>
-                {% endif %}
-                {% if paginator.next_page %}
-                  <a href="{{ paginator.next_page_path }}">次 »</a>
-                {% endif %}
-              </nav>
-
+          <div class="article-inner">
+            <header class="article-header">
+              <h1 class="article-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h1>
+            </header>
+            <div class="article-entry">
+              {% if post.excerpt %}
+                {{ post.excerpt }}
+                <p class="article-more-link">
+                  <a href="{{ post.url | relative_url }}#more">続きを読む</a>
+                </p>
+              {% else %}
+                <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
+                <p class="article-more-link">
+                  <a href="{{ post.url | relative_url }}">続きを読む</a>
+                </p>
+              {% endif %}
             </div>
-
-            <aside class="sidebar sidebar-primary col-md-4" role="complementary">
-              <section class="widget">
-                <h3 class="widget-title">Blog Options</h3>
-                <ul>
-                  <li><a href="/admin">Log in</a></li>
-                  <li><a href="/feed.xml">RSS for Posts</a></li>
-                </ul>
-              </section>
-              <section class="widget">
-                <h3 class="widget-title">Tags</h3>
-                <div class="tagcloud">
-                  {% assign tags = site.tags | sort %}
-                  {% for tag in tags limit:40 %}
-                    <a href="/tag/{{ tag[0] }}/">{{ tag[0] }}</a>
+            <footer class="article-footer">
+              <a data-url="{{ site.url }}{{ post.url }}" class="article-share-link">
+                <span class="share-icon">共有</span>
+              </a>
+              {% if post.tags and post.tags.size > 0 %}
+                <div class="article-tag-list">
+                  {% for tag in post.tags %}
+                    <a href="/tags/#{{ tag | slugify }}" class="article-tag-list-link">#{{ tag }}</a>
                   {% endfor %}
                 </div>
-              </section>
-            </aside>
-
-          </div>
-        </main>
-      </div>
-
-      <footer id="footer" class="footer-wrapper" role="contentinfo">
-        <div class="copyright-wrapper">
-          <div class="row">
-            <p class="credit">Copyright © {{ site.time | date: "%Y" }} <a href="{{ site.url }}">{{ site.title }}</a></p>
+              {% endif %}
+            </footer>
           </div>
         </div>
-      </footer>
-
+      </article>
+    {% endfor %}
+  {% else %}
+    <div class="no-posts">
+      <h2>投稿がありません</h2>
+      <p>まだブログ投稿がありません。最初の投稿を作成してください。</p>
     </div>
-  </div>
-
-</body>
-</html>
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ブログ</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <h1>ブログ</h1>
-    <nav><a href="../README.md">README</a> | <a href="about.html">このブログについて</a></nav>
-    <p>このブログは主に以下の製品やサービスに関する情報を発信します。内容は個人の見解であり、公式見解ではありません。</p>
-    <ul>
-      <li>SharePoint Online と OneDrive for Business</li>
-      <li>SharePoint Server（オンプレミス）</li>
-      <li>Microsoft Stream</li>
-    </ul>
-    <p>本ブログの内容（添付文書、リンク先などを含む）は作成日時点のものであり、予告なく変更される場合があります。</p>
-  </header>
-  <main>
-    <section>
-      <h2>最新記事</h2>
-      <ul>
-        <li>投稿はまだありません。</li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025</p>
-  </footer>
-</body>
-</html>
+  {% endif %}
+</div>

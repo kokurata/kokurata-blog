@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<article class="article article-type-post">
+  <div class="article-meta">
+    <a href="{{ page.url | relative_url }}" class="article-date">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%m月%d日" }}</time>
+    </a>
+    {% if page.categories and page.categories.size > 0 %}
+      <div class="article-category">
+        {% for category in page.categories %}
+          <a href="/categories/#{{ category | slugify }}" class="article-category-link">{{ category }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="article-inner">
+    <header class="article-header">
+      <h1 class="article-title">{{ page.title }}</h1>
+    </header>
+    <div class="article-entry">
+      {{ content }}
+    </div>
+    <footer class="article-footer">
+      <a data-url="{{ site.url }}{{ page.url }}" class="article-share-link">
+        <span class="share-icon">共有</span>
+      </a>
+      {% if page.tags and page.tags.size > 0 %}
+        <div class="article-tag-list">
+          {% for tag in page.tags %}
+            <a href="/tags/#{{ tag | slugify }}" class="article-tag-list-link">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </footer>
+  </div>
+</article>

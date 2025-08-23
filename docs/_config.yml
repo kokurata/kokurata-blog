@@ -4,7 +4,7 @@ description: >-
   SharePoint / OneDrive / Stream に関する技術メモと運用ノウハウ。
 baseurl: ''
 url: 'https://kokurata.github.io'
-remote_theme: mmistakes/minimal-mistakes@4.24.1
+remote_theme: mmistakes/minimal-mistakes
 plugins:
   - jekyll-paginate
   - jekyll-feed

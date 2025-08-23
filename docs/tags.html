@@ -25,7 +25,7 @@ permalink: /tags/
                 {% if post.categories and post.categories.size > 0 %}
                   <div class="article-category">
                     {% for category in post.categories %}
-                      <a href="/categories/#{{ category | slugify }}" class="article-category-link">{{ category }}</a>
+                      <a href="{{ '/categories/#' | append: category | slugify | relative_url }}" class="article-category-link">{{ category }}</a>
                     {% endfor %}
                   </div>
                 {% endif %}

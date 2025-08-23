@@ -25,7 +25,7 @@
       <ul>
         {% for tag in tags %}
           <li>
-            <a href="{{ '/tags/#' | append: tag[0] | slugify | relative_url }}">{{ tag[0] }}</a>
+            <a href="{{ '/tags/' | append: tag[0] | downcase | append: '.html' | relative_url }}">{{ tag[0] }}</a>
             <span class="tag-list-count">{{ tag[1].size }}</span>
           </li>
         {% endfor %}

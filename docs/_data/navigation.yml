@@ -1,0 +1,8 @@
+- title: ホーム
+  url: /
+- title: ブログ
+  url: /categories/blog/
+- title: このブログについて
+  url: /about/
+- title: GitHub
+  url: https://github.com/kokurata/kokurata-blog

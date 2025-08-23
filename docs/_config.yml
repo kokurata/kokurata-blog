@@ -4,15 +4,26 @@ description: >-
   SharePoint / OneDrive / Stream に関する技術メモと運用ノウハウ。
 baseurl: ''
 url: 'https://kokurata.github.io'
-remote_theme: pmarsceill/just-the-docs@v0.7.0
+remote_theme: mmistakes/minimal-mistakes@4.24.1
 plugins:
   - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
 markdown: kramdown
 permalink: /:categories/:title/
+
+# Minimal Mistakes specific settings
+author:
+  name: Koki Kurata
+  email: ''
+logo: /assets/images/logo.png
+hide_gems: true
+title_sidebar: false
+minimal_mistakes_skin: "dark"
 
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
-      layout: post
+      layout: single

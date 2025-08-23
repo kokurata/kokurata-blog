@@ -3,120 +3,204 @@ body {
   font-family: "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "MS ゴシック", "MS Gothic", sans-serif;
   line-height: 1.8;
   color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-/* ヘッダースタイル */
-.site-header {
-  border-bottom: 1px solid #e8e8e8;
-  margin-bottom: 2rem;
-}
-
-/* ホームページスタイル */
-.home {
-  max-width: 800px;
+/* ブログホームスタイル */
+.blog-home {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
 }
 
-.page-heading {
-  font-size: 2.5rem;
+.blog-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.site-title {
+  font-size: 3rem;
   margin-bottom: 1rem;
   color: #0366d6;
+  font-weight: 700;
 }
 
 .site-description {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #666;
-  margin-bottom: 2rem;
   line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* 投稿リストスタイル */
-.post-list {
+/* 投稿コンテナ */
+.posts-container {
   margin-top: 2rem;
 }
 
-.post-list h2 {
-  font-size: 1.8rem;
-  color: #0366d6;
-  border-bottom: 2px solid #0366d6;
-  padding-bottom: 0.5rem;
+/* 投稿カードスタイル */
+.post-card {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.post-header {
   margin-bottom: 1.5rem;
 }
 
-.post-preview {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
+.post-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
 }
 
-.post-preview:last-child {
-  border-bottom: none;
-}
-
-.post-preview h3 {
-  margin-bottom: 0.5rem;
-}
-
-.post-preview h3 a {
+.post-title a {
   color: #0366d6;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.post-preview h3 a:hover {
+.post-title a:hover {
+  color: #0056b3;
   text-decoration: underline;
 }
 
 .post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
   color: #666;
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
 
-.post-excerpt {
-  color: #555;
-  line-height: 1.6;
+.post-date {
+  font-weight: 500;
 }
 
-.post-excerpt a {
-  color: #0366d6;
-  text-decoration: none;
-  font-weight: bold;
+.post-author {
+  font-style: italic;
 }
 
-.post-excerpt a:hover {
-  text-decoration: underline;
+.post-categories {
+  display: flex;
+  gap: 0.5rem;
 }
 
-/* カテゴリタグ */
-.category {
+.category-tag {
   background-color: #f1f8ff;
   color: #0366d6;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
   font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* 投稿抜粋 */
+.post-excerpt {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* 投稿フッター */
+.post-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.read-more {
+  color: #0366d6;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid #0366d6;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  background-color: #0366d6;
+  color: white;
+}
+
+/* 投稿区切り線 */
+.post-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e8e8e8, transparent);
+  margin: 3rem 0;
 }
 
 /* 投稿なしメッセージ */
 .no-posts {
   text-align: center;
   color: #666;
-  font-style: italic;
-  margin: 3rem 0;
+  margin: 4rem 0;
+  padding: 3rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.no-posts h2 {
+  color: #333;
+  margin-bottom: 1rem;
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
-  .home {
-    padding: 0 0.5rem;
+  .blog-home {
+    padding: 1rem 0.5rem;
   }
   
-  .page-heading {
-    font-size: 2rem;
+  .site-title {
+    font-size: 2.2rem;
   }
   
   .site-description {
     font-size: 1rem;
+  }
+  
+  .post-card {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .post-title {
+    font-size: 1.5rem;
+  }
+  
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.8rem;
+  }
+  
+  .post-card {
+    padding: 1rem;
+  }
+  
+  .post-title {
+    font-size: 1.3rem;
   }
 }
 

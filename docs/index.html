@@ -1,40 +1,58 @@
 ---
 layout: default
-title: "ホーム"
+title: "ブログ記事一覧"
 ---
 
-<div class="home">
-
-  <h1 class="page-heading">{{ site.title }}</h1>
-  <p class="site-description">{{ site.description }}</p>
+<div class="blog-home">
+  <header class="blog-header">
+    <h1 class="site-title">{{ site.title }}</h1>
+    <p class="site-description">{{ site.description }}</p>
+  </header>
 
   {% if site.posts.size > 0 %}
-  <div class="post-list">
-    <h2>最新の投稿</h2>
-    {% for post in site.posts limit:5 %}
-    <article class="post-preview">
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-      <p class="post-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
-        {% if post.author %} • {{ post.author }}{% endif %}
-      </p>
+  <main class="posts-container">
+    {% for post in site.posts %}
+    <article class="post-card">
+      <header class="post-header">
+        <h2 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+            {{ post.date | date: "%Y年%m月%d日" }}
+          </time>
+          {% if post.author %}
+          <span class="post-author">• {{ post.author }}</span>
+          {% endif %}
+          {% if post.categories.size > 0 %}
+          <div class="post-categories">
+            {% for category in post.categories %}
+            <span class="category-tag">{{ category }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </header>
+      
       {% if post.excerpt %}
       <div class="post-excerpt">
-        {{ post.excerpt | strip_html | truncatewords: 30 }}
-        <a href="{{ post.url | relative_url }}">続きを読む →</a>
+        {{ post.excerpt | strip_html | truncatewords: 50 }}
       </div>
       {% endif %}
+      
+      <footer class="post-footer">
+        <a href="{{ post.url | relative_url }}" class="read-more">続きを読む →</a>
+      </footer>
     </article>
+    {% unless forloop.last %}<hr class="post-divider">{% endunless %}
     {% endfor %}
-  </div>
-
-  <p><a href="{{ '/blog/' | relative_url }}">すべての投稿を見る →</a></p>
+  </main>
   {% else %}
   <div class="no-posts">
-    <p>投稿はまだありません。</p>
+    <h2>投稿はまだありません</h2>
+    <p>新しい記事が投稿されるまでお待ちください。</p>
   </div>
   {% endif %}
-
 </div>
 
               {% for post in site.posts %}

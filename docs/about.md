@@ -8,8 +8,6 @@ permalink: /about/
 
 ## 運営者
 
-**国田 コウキ (Koki Kurata)**
-
 Microsoft 技術、特に SharePoint や OneDrive に関する技術情報を発信しています。
 
 ## ブログの内容
@@ -40,4 +38,4 @@ Microsoft 技術、特に SharePoint や OneDrive に関する技術情報を発
 
 ---
 
-© 2025 Koki Kurata. All rights reserved.
+© 2025 All rights reserved.

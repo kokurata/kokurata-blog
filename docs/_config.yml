@@ -1,4 +1,4 @@
-title: "国田のブログ"
+title: "技術ブログ"
 email: ''
 description: >-
   SharePoint Online/OneDrive for Business、SharePoint Server（オンプレミス）、
@@ -33,7 +33,7 @@ permalink: /blog/:title/
 
 # 作者情報
 author:
-  name: Koki Kurata
+  name: ブログ管理者
   email: ''
 
 # デフォルト設定
@@ -43,7 +43,7 @@ defaults:
       type: "posts"
     values:
       layout: post
-      author: Koki Kurata
+      author: ブログ管理者
   - scope:
       path: ""
       type: "pages"

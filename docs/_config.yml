@@ -4,7 +4,7 @@ description: >-
   SharePoint / OneDrive / Stream に関する技術メモと運用ノウハウ。
 baseurl: ''
 url: 'https://kokurata.github.io'
-remote_theme: mmistakes/minimal-mistakes
+theme: jekyll-theme-primer
 plugins:
   - jekyll-paginate
   - jekyll-feed
@@ -16,10 +16,9 @@ permalink: /:categories/:title/
 author:
   name: Koki Kurata
   email: ''
-logo: /assets/images/logo.png
-hide_gems: true
-title_sidebar: false
-minimal_mistakes_skin: "dark"
+# Removed Minimal Mistakes specific settings because the remote theme used
+# Liquid tags/plugins not available in GitHub Pages environment.
+# Using the supported `jekyll-theme-primer` to ensure Builds succeed.
 
 defaults:
   - scope:

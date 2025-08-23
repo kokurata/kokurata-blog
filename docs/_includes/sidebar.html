@@ -6,7 +6,7 @@
       <ul>
         {% for category in categories %}
           <li>
-            <a href="{{ '/categories/#' | append: category[0] | slugify | relative_url }}">{{ category[0] }}</a>
+            <a href="{{ '/categories/' | append: category[0] | append: '.html' | relative_url }}">{{ category[0] }}</a>
             <span class="category-list-count">{{ category[1].size }}</span>
           </li>
         {% endfor %}

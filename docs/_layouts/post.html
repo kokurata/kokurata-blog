@@ -10,7 +10,7 @@ layout: default
     {% if page.categories and page.categories.size > 0 %}
       <div class="article-category">
         {% for category in page.categories %}
-          <a href="{{ '/categories/#' | append: category | slugify | relative_url }}" class="article-category-link">{{ category }}</a>
+          <a href="{{ '/categories/' | append: category | append: '.html' | relative_url }}" class="article-category-link">{{ category }}</a>
         {% endfor %}
       </div>
     {% endif %}

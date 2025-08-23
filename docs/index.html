@@ -1,52 +1,41 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ site.title }}</title>
-  <link rel="stylesheet" href="/assets/styles.css">
-</head>
-<body data-rsssl="1" class="wordpress ltr en en-us parent-theme y2025 m08 d23 h14 saturday logged-out custom-header wp-custom-logo display-header-text plural home blog layout-default fluid ms-blog" dir="ltr" itemscope itemtype="http://schema.org/Blog">
+---
+layout: default
+title: "ホーム"
+---
 
-  <div id="container" class="container-fluid">
-    <div class="sg-test">
+<div class="home">
 
-      <div class="skip-link">
-        <a href="#content" class="sr-only screen-reader-text">Skip to content</a>
+  <h1 class="page-heading">{{ site.title }}</h1>
+  <p class="site-description">{{ site.description }}</p>
+
+  {% if site.posts.size > 0 %}
+  <div class="post-list">
+    <h2>最新の投稿</h2>
+    {% for post in site.posts limit:5 %}
+    <article class="post-preview">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+      <p class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
+        {% if post.author %} • {{ post.author }}{% endif %}
+      </p>
+      {% if post.excerpt %}
+      <div class="post-excerpt">
+        {{ post.excerpt | strip_html | truncatewords: 30 }}
+        <a href="{{ post.url | relative_url }}">続きを読む →</a>
       </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
 
-      <header id="header" class="header" role="banner">
-        <div class="flex-row">
-          <div class="flex-col col-8 col-branding" id="branding">
-            <div class="branding-wrapper">
-              <div class="blog-logo-pic">
-                <a href="{{ site.url }}" class="custom-logo-link" rel="home"><img src="{{ '/assets/images/logo.svg' | relative_url }}" class="custom-logo" alt="{{ site.title }}"></a>
-              </div>
-              <div class="blog-logo-text">
-                <div id="site-title" class="site-title"><a href="{{ site.url }}">{{ site.title }}</a></div>
-                <div id="site-description" class="site-description">{{ site.description }}</div>
-                <div class="site-disclaimer">{{ site.description | split: '\n' | last }}</div>
-              </div>
-            </div>
-          </div>
-          <div class="flex-col col-2 col-header-right ta-right">
-            <aside class="sidebar sidebar-header-right" role="complementary">
-              <form role="search" method="get" class="search-form" action="/">
-                <label>
-                  <span class="screen-reader-text">Search for:</span>
-                  <input type="search" class="search-field" placeholder="Search …" name="s">
-                </label>
-                <input type="submit" class="search-submit" value="Search">
-              </form>
-            </aside>
-          </div>
-        </div>
-      </header>
+  <p><a href="{{ '/blog/' | relative_url }}">すべての投稿を見る →</a></p>
+  {% else %}
+  <div class="no-posts">
+    <p>投稿はまだありません。</p>
+  </div>
+  {% endif %}
 
-      <div id="main" class="main">
-        <main id="content" class="content" role="main">
-          <div class="row">
-            <div class="entry-wrapper col-md-8">
+</div>
 
               {% for post in site.posts %}
               <article class="entry" itemscope itemtype="http://schema.org/BlogPosting">

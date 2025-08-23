@@ -1,28 +1,58 @@
-title: kokurata-blog
+title: "国田のブログ"
 email: ''
 description: >-
-  SharePoint / OneDrive / Stream に関する技術メモと運用ノウハウ。
-baseurl: ''
+  SharePoint Online/OneDrive for Business、SharePoint Server（オンプレミス）、
+  Microsoft Stream に関する技術メモと運用ノウハウ。
+  記載内容は個人の見解であり、所属組織の公式見解ではありません。
+baseurl: '/kokurata-blog'
 url: 'https://kokurata.github.io'
 theme: jekyll-theme-primer
+
+# 言語設定
+lang: ja
+
+# ブログ設定
+show_excerpts: true
+paginate: 10
+paginate_path: "/page:num/"
+
+# プラグイン
 plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-seo-tag
-markdown: kramdown
-permalink: /:categories/:title/
 
-# Minimal Mistakes specific settings
+# マークダウン設定
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# パーマリンク設定
+permalink: /blog/:title/
+
+# 作者情報
 author:
   name: Koki Kurata
   email: ''
-# Removed Minimal Mistakes specific settings because the remote theme used
-# Liquid tags/plugins not available in GitHub Pages environment.
-# Using the supported `jekyll-theme-primer` to ensure Builds succeed.
 
+# デフォルト設定
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
-      layout: single
+      layout: post
+      author: Koki Kurata
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+# 除外ファイル
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

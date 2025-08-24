@@ -1,0 +1,39 @@
+---
+layout: default
+title: "タグ: 分散キャッシュ"
+permalink: /tags/分散キャッシュ.html
+---
+
+<div class="archive">
+  <h1 class="page-title">タグ: 分散キャッシュ</h1>
+
+  {% assign tagged_posts = site.posts | where_exp: "post", "post.tags contains '分散キャッシュ'" %}
+
+  {% if tagged_posts.size > 0 %}
+    {% for post in tagged_posts %}
+      <article class="archive-article archive-type-post">
+        <div class="archive-article-inner">
+          <div class="article-meta">
+            <a href="{{ post.url | relative_url }}" class="article-date">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
+            </a>
+          </div>
+          <div class="article-inner">
+            <header class="article-header">
+              <h3 class="article-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h3>
+            </header>
+            {% if post.excerpt %}
+              <div class="article-entry">
+                {{ post.excerpt | strip_html | truncatewords: 30 }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  {% else %}
+    <p>このタグが付いた記事はまだありません。</p>
+  {% endif %}
+</div>

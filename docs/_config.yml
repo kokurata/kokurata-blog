@@ -32,7 +32,7 @@ permalink: /blog/:title/
 
 # 作者情報
 author:
-  name: ブログ管理者
+  name: Koki Kurata
   email: ''
 
 # デフォルト設定
@@ -42,7 +42,7 @@ defaults:
       type: "posts"
     values:
       layout: post
-      author: ブログ管理者
+  author: Koki Kurata
   - scope:
       path: ""
       type: "pages"

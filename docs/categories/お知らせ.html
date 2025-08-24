@@ -43,7 +43,7 @@ permalink: /categories/お知らせ.html
             {% if post.tags and post.tags.size > 0 %}
               <div class="article-tag-list">
                 {% for tag in post.tags %}
-                  <a href="{{ '/tags/' | append: tag | downcase | append: '.html' | relative_url }}" class="article-tag-list-link">#{{ tag }}</a>
+                  <a href="{{ '/tags/' | append: tag | downcase | append: '.html' | relative_url }}" class="article-tag-list-link">{{ tag }}</a>
                 {% endfor %}
               </div>
             {% endif %}

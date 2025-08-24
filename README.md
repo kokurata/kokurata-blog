@@ -1,4 +1,3 @@
-git remote add origin https://github.com/<OWNER>/<REPO>.git
 # kokurata-blog
 
 GitHub Pages で公開する日本語ブログのリポジトリです。`docs/` フォルダが公開対象で、Jekyll（GitHub Pages 管理版）でビルドされます。
@@ -56,3 +55,70 @@ git -C "C:\temp\githubpages" push -u origin main
 
 免責事項
 本ブログはマイクロソフトの公式見解ではなく、筆者個人の見解になります。本ブログの内容（添付文書、リンク先などを含む）は作成日時点のものであり、予告なく変更される場合があります。実運用での適用は、必ず公式ドキュメントやサービス提供元で最新情報を確認してください。
+
+---
+
+記事を削除する場合
+1) 物理削除（推奨）
+```powershell
+# 削除したい投稿ファイルを確認して削除
+Remove-Item "C:\temp\githubpages\docs\_posts\2025-08-23-welcome.md"
+
+# 変更をコミット・プッシュ
+git -C "C:\temp\githubpages" add -A
+git -C "C:\temp\githubpages" commit -m "chore(posts): remove 2025-08-23-welcome"
+git -C "C:\temp\githubpages" push
+```
+
+2) 非公開化（ファイルは残す）
+対象投稿の Front Matter に `published: false` を追加します。
+```yaml
+---
+title: "タイトル"
+date: 2025-08-23
+categories: [Sample]
+tags: [welcome]
+published: false
+---
+```
+
+タグの追加方法
+1) 投稿にタグを付与
+対象投稿の Front Matter の `tags:` に追加します。表記は任意ですが、当サイトでは小文字リンク（`/tags/<tag>.html`）になるため、タグ名の大文字小文字は統一推奨です。
+```yaml
+tags: [sharepoint, onedrive]
+```
+
+2) タグページを作成（必須）
+投稿一覧・記事内のタグリンクは `/tags/<tag>.html` を参照します。新規タグを作ったら、次のスクリプトでタグページを作成してください。
+```powershell
+# 例: sharepoint タグページを作成
+powershell -ExecutionPolicy Bypass -File .\create-tag-page.ps1 "sharepoint"
+
+# 例: onedrive タグページを作成
+powershell -ExecutionPolicy Bypass -File .\create-tag-page.ps1 "onedrive"
+
+# 変更をコミット・プッシュ
+git -C "C:\temp\githubpages" add -A
+git -C "C:\temp\githubpages" commit -m "feat(tags): add tag pages for sharepoint, onedrive"
+git -C "C:\temp\githubpages" push
+```
+
+タグの削除方法
+1) 投稿からタグをすべて外す（検索の例）
+```powershell
+# タグ 'sharepoint' を含む投稿を検索
+Select-String -Path "C:\temp\githubpages\docs\_posts\*.md" -Pattern "tags:|\bsharepoint\b" -Context 0,3
+```
+該当投稿の `tags:` から当該タグを削除し、コミット・プッシュします。
+
+2) タグページを削除
+投稿からタグを外した後、対応するページを削除します。
+```powershell
+Remove-Item "C:\temp\githubpages\docs\tags\sharepoint.html" -Force
+
+git -C "C:\temp\githubpages" add -A
+git -C "C:\temp\githubpages" commit -m "chore(tags): remove sharepoint tag page"
+git -C "C:\temp\githubpages" push
+```
+（補足）タグページを残したままでもタグが付いた投稿が無ければ一覧には現れませんが、直接 URL にアクセスすると空のページが表示されます。リンク切れを避けるため、不要になったタグページは削除を推奨します。

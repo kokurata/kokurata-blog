@@ -142,7 +142,7 @@ body {
   text-decoration: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   transition: opacity 0.2s;
-  display: block;
+  display: inline-block; /* fit to content width */
   padding: 15px 20px;
   font-size: 16px;
 }
@@ -173,6 +173,8 @@ body {
 #main-nav,
 #sub-nav {
   flex-wrap: nowrap;
+  flex: 0 0 auto;      /* do not shrink */
+  white-space: nowrap; /* keep items on one line */
 }
 
 #sub-nav .main-nav-link[href$="feed.xml"] {

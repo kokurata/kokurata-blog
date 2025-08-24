@@ -2,7 +2,7 @@
 title: "SharePoint Server 2016 / 2019 分散キャッシュ サービス再構成手順"
 date: 2025-08-24 10:30:00 +0900
 categories: [SharePoint]
-tags: [SharePoint, 分散キャッシュ]
+tags: [SharePoint, 分散キャッシュ,SharePoint Server 2016,SharePoint Server 2019]
 excerpt: "SharePoint Server 2016 / 2019 環境で分散キャッシュ サービスを一度削除して再構成する手順のまとめ。プロキシ設定の確認から、既存ホストの削除、再構成とクラスタ確認までを解説します。"
 ---
 

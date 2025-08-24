@@ -2,7 +2,7 @@
 title: "SharePoint Server Subscription Edition: 分散キャッシュ ホストの再構築手順（単一サーバー ファーム）"
 date: 2025-08-24
 categories: [SharePoint]
-tags: [SharePoint, 分散キャッシュ, subscriptionedition]
+tags: [SharePoint, 分散キャッシュ, SharePoint Server Subscription Edition]
 excerpt: "SharePoint Server Subscription Edition の単一サーバー ファームで分散キャッシュを再構築する手順です。"
 ---
 

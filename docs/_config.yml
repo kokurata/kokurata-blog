@@ -41,8 +41,8 @@ defaults:
       path: ""
       type: "posts"
     values:
-  layout: post
-  author: Koki Kurata
+      layout: post
+      author: Koki Kurata
   - scope:
       path: ""
       type: "pages"

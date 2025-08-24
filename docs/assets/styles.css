@@ -473,10 +473,10 @@ body {
 /* フッター */
 #footer {
   background: #2c3e50;
-  padding: 60px 0;
+  padding: 24px 0; /* compact height */
   border-top: 1px solid #e1e8ed;
   color: #bdc3c7;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 #footer a {
@@ -489,8 +489,8 @@ body {
 }
 
 #footer-info {
-  line-height: 1.6em;
-  font-size: 14px;
+  line-height: 1.6;
+  font-size: 13px;
   text-align: center;
 }
 

@@ -109,9 +109,21 @@ body {
 }
 
 /* ナビゲーション */
+/* Use flexbox for header inner navigation bar */
+#header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8px 40px 12px;
+}
+
 #main-nav {
-  float: left;
-  margin-left: -15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
 }
 
 .main-nav-link, .nav-icon {
@@ -136,14 +148,21 @@ body {
 }
 
 #sub-nav {
-  float: right;
-  margin-right: -15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
 }
 
 #sub-nav .main-nav-link[href$="feed.xml"] {
   display: inline-block;
   color: #fff;
   opacity: 0.9;
+}
+
+/* Hide legacy hamburger icon (no JS behavior in this site) */
+#main-nav-toggle.nav-icon {
+  display: none;
 }
 
 /* コンテナ */
@@ -451,6 +470,16 @@ body {
     flex-direction: column;
     padding: 0 20px;
     gap: 30px;
+  }
+  
+  /* Stack header nav on smaller screens */
+  #header-inner {
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 20px 12px;
+  }
+  #main-nav, #sub-nav {
+    justify-content: center;
   }
   
   #main {

@@ -55,3 +55,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor/
+  - backup_deleted/

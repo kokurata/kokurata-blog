@@ -11,6 +11,9 @@
   
   <!-- Favicon -->
   <link rel="icon" href="{{ '/assets/images/logo.svg' | relative_url }}" type="image/svg+xml">
+  
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body>
   <div id="container">
@@ -35,7 +38,7 @@
               <a class="main-nav-link" href="{{ '/archives/' | relative_url }}">アーカイブ</a>
             </nav>
             <nav id="sub-nav">
-              <a class="nav-icon nav-search-btn" title="検索"><span class="fa fa-search"></span></a>
+              <a class="main-nav-link" href="{{ '/feed.xml' | relative_url }}" aria-label="RSSフィード">RSS</a>
             </nav>
           </div>
         </div>
@@ -51,7 +54,7 @@
       <footer id="footer">
         <div class="outer">
           <div id="footer-info" class="inner">
-            &copy; {{ 'now' | date: "%Y" }} {{ site.author.name | default: site.title }}<br>
+            &copy; {{ 'now' | date: "%Y" }} {{ site.author.name | default: site.title }} · <a href="{{ '/feed.xml' | relative_url }}">RSS</a><br>
             Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
           </div>
         </div>

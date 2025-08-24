@@ -140,6 +140,12 @@ body {
   margin-right: -15px;
 }
 
+#sub-nav .main-nav-link[href$="feed.xml"] {
+  display: inline-block;
+  color: #fff;
+  opacity: 0.9;
+}
+
 /* コンテナ */
 #container {
   position: relative;

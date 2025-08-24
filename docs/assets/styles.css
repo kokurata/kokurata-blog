@@ -52,6 +52,14 @@ body {
   gap: 40px;
 }
 
+/* Header should not inherit the global .outer flex layout */
+#header-outer,
+#header .outer {
+  display: block;
+  gap: 0;
+  margin-top: 0;
+}
+
 #profile-section {
   display: flex;
   align-items: center;
@@ -114,6 +122,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   max-width: 1400px;
   margin: 0 auto;
   padding: 8px 40px 12px;
@@ -127,7 +136,7 @@ body {
 }
 
 .main-nav-link, .nav-icon {
-  float: left;
+  float: none; /* use flex, not floats */
   color: #fff;
   opacity: 0.8;
   text-decoration: none;
@@ -154,6 +163,18 @@ body {
   margin: 0;
 }
 
+/* Prevent Japanese text from breaking into vertical columns */
+#main-nav .main-nav-link,
+#sub-nav .main-nav-link {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+#main-nav,
+#sub-nav {
+  flex-wrap: nowrap;
+}
+
 #sub-nav .main-nav-link[href$="feed.xml"] {
   display: inline-block;
   color: #fff;
@@ -163,6 +184,13 @@ body {
 /* Hide legacy hamburger icon (no JS behavior in this site) */
 #main-nav-toggle.nav-icon {
   display: none;
+}
+
+/* Reset floats for flex layout */
+#main-nav .main-nav-link,
+#main-nav .nav-icon,
+#sub-nav .main-nav-link {
+  float: none;
 }
 
 /* コンテナ */

@@ -496,9 +496,10 @@ body {
 }
 
 #footer-info {
-  line-height: 1.25;
+  line-height: 1.2; /* single line */
   font-size: 12px;
   text-align: center;
+  white-space: nowrap; /* keep one line */
 }
 
 /* レスポンシブ */

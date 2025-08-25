@@ -56,3 +56,6 @@ exclude:
   - Gemfile.lock
   - vendor/
   - backup_deleted/
+  - _plugins/
+  - posts/
+  - blog.md
